@@ -1,0 +1,42 @@
+
+In order to save the pizza , we will add the entity framework core to our brand new pages app
+
+ ............ Piza deleivery app .........................
+
+Simplified and easier to use page-based web app programming model  that focuses on using a file based
+rooting approach eliminating much of the work load asp.net mvc contributes
+
+this also keeps ui and buisness logic separated but still within thesame page
+
+Razor page is the recomended way to create new  page base or form based apps for developers new
+to asp.net core
+
+It provides a more accessible starting point than asp.net core mvc 
+
+Benefits 
+       -Quickly build and update the ui code for the page is kept with the page while keeping 
+	ui and business logic concerns separate
+
+	-testable and scalable to large apps 
+	-Keep ASP.NET Core pages organized in a more straightforward way than asp.net mvc
+	-View specific logic and view models can be kept together in their namespace and directory
+	-Groups of related pages can be kept in their namespace and directory
+
+
+
+ PAGE HANDLER (RAZOR PAGE)         ->           VIEW MODEL         ->       VIEW        ->        FINAL HTML
+      
+
+ A pizza deliever app with razor pages 
+
+
+
+
+
+
+
+
+
+
+
+

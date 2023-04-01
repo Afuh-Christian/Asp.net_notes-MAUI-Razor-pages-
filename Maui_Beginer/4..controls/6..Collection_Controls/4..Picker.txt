@@ -1,0 +1,33 @@
+............
+needs to be in a layout element 
+also has 
+
+-data source
+
+
+----------------------------------------------------
+VerticalOptions ...can be set in the <Picker>
+----------------------------------------------------
+
+----------------------------------------------------
+
+----------------------------------------------------
+
+we click on an  input feild on the app
+it displays a pop up window for all the items available
+choose one ..... it appears in the input field
+
+    <StackLayout>
+        <Picker VerticalOptions="Center" 
+                >
+            <Picker.ItemsSource>
+                <x:Array  Type="{x:Type x:String}">
+                    <x:String>This is mine</x:String>
+                    <x:String>All of them</x:String>
+                    <x:String>Nothing much</x:String>
+                    <x:String>How to eat</x:String>
+                    <x:String>Very cool</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </StackLayout>

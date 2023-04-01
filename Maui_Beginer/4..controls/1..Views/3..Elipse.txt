@@ -1,0 +1,18 @@
+...............
+
+for drawing ellipses 
+
+   <Ellipse Fill ="DarkRed"
+                 HeightRequest="200"
+                 WidthRequest="100"
+                 Stroke="DarkGreen"
+                 StrokeThickness="10"
+               />
+
+
+
+Meaning
+
+ Fill = Color or background color
+Stroke = border color
+StrokeThickness = border thickness

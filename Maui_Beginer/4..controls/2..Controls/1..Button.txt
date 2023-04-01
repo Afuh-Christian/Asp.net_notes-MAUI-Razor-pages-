@@ -1,0 +1,53 @@
+//##########,,,,,,,,,,
+<Button/>
+########........in xaml......########
+--------------------
+x:Name = name of controll..that'll be used in the cs
+--------------------
+Clicked = event that will be handel in the cs
+--------------------
+
+--------------------
+########......in cs.......########
+
+--------------------
+DisplayAlert() .... displayes message 
+--------------------
+
+--------------------
+
+--------------------
+  private void btnclick_Clicked(object sender, EventArgs e)
+    {
+		DisplayAlert("Titl", "This is a demo", "ok");
+
+
+
+
+
+##############################################33
+ <Button 
+             x:Name="btnclick"
+             Text="click it" 
+             Clicked="btnclick_Clicked"
+             />
+
+################################################
+
+namespace Controls_App;
+
+public partial class Controls : ContentPage
+{
+	public Controls()
+	{
+		InitializeComponent();
+	}
+
+    private void btnclick_Clicked(object sender, EventArgs e)
+    {
+		DisplayAlert("Titl", "This is a demo", "ok");
+
+    }
+}
+
+    } 

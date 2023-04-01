@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Controls_App.Controls"
+             Title="Controls">
+    <StackLayout>
+        <Button 
+             x:Name="btnclick"
+             Text="click it" 
+             Clicked="btnclick_Clicked"
+             />
+
+
+        <ImageButton
+            Source="dotnet_bot.svg"
+            Clicked="btnclick_Clicked"
+            />
+
+
+        <!--RadioButton -->
+        <RadioButton
+            CheckedChanged="RadioButton_CheckedChanged"
+            Content="Option 1" 
+            GroupName="g__1"
+            
+            />
+
+        <RadioButton
+            CheckedChanged="RadioButton_CheckedChanged"
+            Content="Option 2" 
+            GroupName="g__1"
+            />
+
+        <RadioButton
+            CheckedChanged="RadioButton_CheckedChanged"
+            Content="Option 3" 
+           
+            />
+
+        <RadioButton
+            CheckedChanged="RadioButton_CheckedChanged"
+            Content="Option 4" 
+            
+           />
+        
+        <!-- SearchBar-->
+
+        <SearchBar
+            x:Name="searhControl"
+            SearchButtonPressed="searhControl_SearchButtonPressed"
+            
+            />
+        
+        <!-- SwipeView-->
+
+        <SwipeView>
+            <!--items section-->
+            <SwipeView.LeftItems>
+                
+                <SwipeItem
+                    Text="Favorite"
+                    BackgroundColor="LightGreen"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+                <SwipeItem
+                    Text="Delete"
+                    BackgroundColor="Pink"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+                <SwipeItem
+                    Text="update"
+                    BackgroundColor="Gainsboro"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+
+            </SwipeView.LeftItems>
+            <!--main section-->
+            <Grid
+                BackgroundColor="LightGrey"
+                HeightRequest="60"
+                WidthRequest="300"
+                >
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Swipe Right" 
+                    VerticalOptions="Center"/>
+
+            </Grid>
+            
+            
+        </SwipeView>
+
+
+
+
+
+    </StackLayout>
+</ContentPage>

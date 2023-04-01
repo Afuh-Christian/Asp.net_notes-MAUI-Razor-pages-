@@ -1,0 +1,23 @@
+...........for drawing lines ............
+
+
+
+            <Polyline
+                Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+                Stroke="Red"
+                />
+
+
+........
+
+Like heart rate in hospitals
+
+
+
+       <Polyline
+                Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+                Fill="Blue"
+                Stroke="Red"
+                StrokeThickness="10"
+                />
+

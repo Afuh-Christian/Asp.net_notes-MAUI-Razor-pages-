@@ -1,0 +1,88 @@
+
+
+
+
+
+
+
+Some templates in visual studio 
+
+WE can build apps that:
+-render UI from the server 
+-render UI on the client in the browser
+-use both server and client UI rendering approaches ie hybrid approach
+
+
+####################################################################################################
+####################################################################################################
+
+
+SERVER RENDERED UI 
+  App UI(html & css) is dynamically rendered on the server and arrives at the client ready for display
+ (the ui(html & css) are dynamically generated on the server in response to a broswer request)
+
+  Advantage 
+  - Clients requirements are minimal because the server takes care of the logic and page generation (this is great for building low end devices,(users with low bandwidth and multiple browser will appreciate this)
+  Disadvantage
+  - It's expensive as the server handles all the work and user interaction time consuming cuz every update has to be generated and rendered by the server(this approach is commonly used for static sites)
+
+
+
+
+CLIENT RENDERED UI
+  App UI is dynamically rendered on the client by directly updating the browser DOM as necessary
+  
+  Advantage 
+   -The app is highly interractive as the UI updates are handled locally
+   -Cheaper as the cost of rendering the UI is uploaded to the client 
+   -Supports building progressive web apps as the offline mode will still provide interactivity
+
+  Disadvantage
+    -It'll exclude clients that have clients that have low end devices or low bandwidth and when it comes to load time of the logic , users may experience latency as the code needs to be downloaded onto the client(this approach is used for interactive dashboards or collective apps )
+
+
+
+####################################################################################################
+####################################################################################################
+
+
+
+
+SERVER RENDERED ASP.NET Core UI solution
+  We can choose between RAZOR pages or MVC(model view controller)
+  
+
+  RAZOR PAGES 
+    Page based model where the UI and buisness logic concerns are kept separate
+    Advantages 
+    -It's easy to make UI updates and keep the page organised
+    -This approach is easy to test and scale
+
+  MVC 
+    This pattern separates the app into Models,Views and Controllers
+    
+    Controllers
+       -Are responsible for working with the models to perform user actions   
+       -It chooses the view to display and provides it with the data required (important in building scalable larg apps ) 
+
+
+
+
+CLIENT RENDERED ASP.NET Core UI Solution
+  We can choose between the BLAZOR framework or A simple page app(e.g with js)
+
+  BLAZOR 
+  Blazor apps are composed of Razor Components
+  -We create segments of reusable , web UI using C#,HTML and CSS (Both client and server code are written in C#)
+    - Blazor apps work well with model browsers because Blazor uses open web standards without plugins
+
+  SINGLE PAGE APPLICATION(SPA) with JS (frameworks such as Angular and React)
+  Build client-side logic using popular JavaScript frameworks , like Angular,React
+    
+
+
+
+  
+
+
+

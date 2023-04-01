@@ -1,0 +1,260 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+-Arranges elements in rows and columns
+-Can contain other layout (acting as a parent layout )
+
+NB...Allow specify the rows and columns or it'll 
+	-Use up the whole window
+	-place on element on the other
+
+############### .... to work with rows.....#######################
+...<RowDefinition></RowDefinition> is used to create new rows
+
+
+ <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+    </Grid>
+
+############### .... to work with rows.....###################
+<ColumnDefinition></ColumnDefinition>  is used to create new columns
+
+
+   <Grid>
+  
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+    </Grid>
+
+
+######################################################
+
+how to position the rows and columns
+
+
+
+
+###########################,..Example..###########################
+
+A normal 3 rows , 3 columns page
+
+ABC
+DEF
+GHI
+
+
+   <Grid
+        ColumnSpacing="10"
+        RowSpacing="10"
+        Padding="10"
+        >
+        
+        <Grid.RowDefinitions
+            spacing="10"
+            >
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- row 1-->
+        <Button
+            Text="A"
+            Grid.Row="0" Grid.Column="0"
+            />
+        <Button
+            Text="B"
+            Grid.Row="0" Grid.Column="1"
+            />
+        <Button
+            Text="C"
+            Grid.Row="0" Grid.Column="2"
+            />
+        <!-- row 2-->
+        <Button
+            Text="D"
+            Grid.Row="1" Grid.Column="0"
+            />
+        <Button
+            Text="E"
+            Grid.Row="1" Grid.Column="1"
+            />
+        <Button
+            Text="F"
+            Grid.Row="1" Grid.Column="2"
+            />
+        <!-- row 3-->
+        <Button
+            Text="G"
+            Grid.Row="2" Grid.Column="0"
+            />
+        <Button
+            Text="H"
+            Grid.Row="2" Grid.Column="1"
+            />
+        <Button
+            Text="I"
+            Grid.Row="2" Grid.Column="2"
+            />
+        
+    </Grid>
+    
+
+
+######################################################
+######################################################
+
+we can add
+ 
+	-Grid.ColumnSpan 
+	-Grid.RowSpan
+to the button to ocupy more than one column and row respectively
+
+ 
+
+
+   <Grid
+        ColumnSpacing="10"
+        RowSpacing="10"
+        Padding="10"
+        >
+        
+        <Grid.RowDefinitions
+            spacing="10"
+            >
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- row 1-->
+        <Button
+            Text="A"
+            Grid.Row="0" Grid.Column="0"
+            
+            Grid.ColumnSpan="2"
+           
+            />
+       
+        <Button
+            Text="C"
+            Grid.Row="0" Grid.Column="2"
+            
+            Grid.RowSpan="3"
+            />
+        <!-- row 2-->
+        <Button
+            Text="D"
+            Grid.Row="1" Grid.Column="0"
+            />
+        <Button
+            Text="E"
+            Grid.Row="1" Grid.Column="1"
+            />
+    
+        <!-- row 3-->
+        <Button
+            Text="G"
+            Grid.Row="2" Grid.Column="0"
+            />
+        <Button
+            Text="H"
+            Grid.Row="2" Grid.Column="1"
+            />
+     
+        
+    </Grid>
+    
+
+A... deleted B 
+C....deleted F , I
+
+######################################################
+
+ <RowDefinition></RowDefinition> we can add
+   -height... auto  = we can set it to  which will depend on the height of the element in it
+   	       *  = to use all the available space	
+	       .3* = 30% of space ..
+
+
+######################################################
+
+######################################################
+######################################################
+######################################################
+this is another way to create a table 
+ -RowDefinitions="100,100,100"
+ -ColumnDefinitions="100,100,100"
+
+  100 = height 
+
+
+    <Grid
+        ColumnSpacing="10"
+        RowSpacing="10"
+        Padding="10"
+        
+        RowDefinitions="100,100,100"
+        ColumnDefinitions="100,100,100"        
+        >
+
+   
+        <!-- row 1-->
+        <Button
+            Text="A"
+            Grid.Row="0" Grid.Column="0"
+            
+            Grid.ColumnSpan="2"
+           
+            />
+       
+        <Button
+            Text="C"
+            Grid.Row="0" Grid.Column="2"
+            
+            Grid.RowSpan="3"
+            />
+        <!-- row 2-->
+        <Button
+            Text="D"
+            Grid.Row="1" Grid.Column="0"
+            />
+        <Button
+            Text="E"
+            Grid.Row="1" Grid.Column="1"
+            />
+    
+        <!-- row 3-->
+        <Button
+            Text="G"
+            Grid.Row="2" Grid.Column="0"
+            />
+        <Button
+            Text="H"
+            Grid.Row="2" Grid.Column="1"
+            />
+
+    </Grid>
+    
+######################################################
+
+######################################################
+
+######################################################
+
+######################################################
+
+######################################################
+
+######################################################
+

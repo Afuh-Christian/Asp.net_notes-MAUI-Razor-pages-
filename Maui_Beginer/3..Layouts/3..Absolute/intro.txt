@@ -1,0 +1,117 @@
+
+
+-Used to position and size controls using explicite values
+-Position is controlled by the upper left corner of each controll 
+ relative to the uper left corner of the absolute layout 
+
+-Also implements a propertional positioning and sizing functions
+
+
+
+Now .....
+
+######################################################################################################
+
+
+ <AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            />
+    </AbsoluteLayout>
+
+the button is at the top left corner of the contentpage
+
+######################################################################################################
+
+the contents in the Absolute layout will have some properties that 
+can be accessed through the .... AbsoluteLayout.    :-
+
+-LayoutBounds
+	AbsoluteLayout.LayoutBounds = "x,y,w,h"
+
+e.g
+<AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            AbsoluteLayout.LayoutBounds="100,100,70,70"
+            />
+    </AbsoluteLayout>
+####################
+
+The attributes in LayoutFlags are all proportionall to their parent containers
+
+-LayoutFlags
+	 AbsoluteLayout.LayoutFlags=""
+
+
+ <AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            AbsoluteLayout.LayoutBounds="100,100,70,.5"
+            AbsoluteLayout.LayoutFlags="HeightProportional"
+            />
+    </AbsoluteLayout>
+
+Now the Height of the button is 50% of the total screen
+
+####################
+NB....
+LayoutFlags & LayoutBounds work together 
+
+HeightProportional....propertional height
+sizeProportional....to width and height 
+
+
+  <AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            AbsoluteLayout.LayoutBounds="100,100,.5,.5"
+            AbsoluteLayout.LayoutFlags="SizeProportional"
+            />
+    </AbsoluteLayout>
+
+
+now the btn is 50% h and 50% w
+
+
+####################
+We can use more than one propotionals by seperating with a comma
+
+  <AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            AbsoluteLayout.LayoutBounds=".5,100,.5,.5"
+            AbsoluteLayout.LayoutFlags="SizeProportional,XProportional"
+            />
+    </AbsoluteLayout>
+
+You know what this does ... if not you're and idiot 
+
+####################
+
+If you want all the values to be proportional ,,, use ... All
+
+    <AbsoluteLayout>
+        <Button 
+            Text="Net Maui"
+            AbsoluteLayout.LayoutBounds=".3,.5,.5,.5"
+            AbsoluteLayout.LayoutFlags="All"
+            />
+    </AbsoluteLayout>
+
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################
+
+######################################################################################################

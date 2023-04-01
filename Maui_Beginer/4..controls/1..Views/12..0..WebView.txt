@@ -1,0 +1,19 @@
+..............
+
+For displaying a website on the screen 
+
+
+
+
+            <WebView 
+                 HeightRequest="500"
+                Source="https//academaia.elcamino.dev"
+               
+                
+                />
+
+            <WebView 
+                 HeightRequest="10000"
+                Source="https://www.youtube.com/"
+                 
+                />

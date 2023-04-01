@@ -1,0 +1,16 @@
+....to have multiple text blocks....multiline....Textarea in html..........
+
+----------------------------
+AutoSize="TextChanges" ......changes according to text
+--------------------------
+
+
+ <Editor
+            AutoSize="TextChanges"
+            />
+
+
+NB...textChange and Completed envent listerners are also present 
+
+
+

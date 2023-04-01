@@ -1,0 +1,12 @@
+.....
+For getting a collection of items  like in the MVVM
+
+
+CarouseView = left to right
+ListView = top to down 
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+.........
+
+A card like format
+
+
+     <Frame
+                BackgroundColor="Pink"
+                >
+            <Image Source="dotnet_bot.svg"
+                     Aspect="Fill"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   />
+
+            </Frame>

@@ -1,0 +1,117 @@
+..........
+
+We'll also 
+
+
+######################################################
+
+-create a ContentPage and name it TabbedPageDemo
+-Change it's type  to TabbedPage
+
+TabbedPageDemo.xaml
+
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pages.TabedPageDemo"
+             Title="TabedPageDemo">
+ 
+</TabbedPage>
+
+
+######################
+
+TabbedPageDemo.xaml.cs
+namespace Pages;
+
+public partial class TabedPageDemo : TabbedPage
+{
+	public TabedPageDemo()
+	{
+		InitializeComponent();
+	}
+}
+
+
+
+######################################################
+
+NB .... Tabbed page accepts only content page elements 
+
+it's realy easy with tabbed pages
+
+we have one tab <ContenPage Title = "page 1>
+the contents on the ContentPage with Title = "page 1" will
+be displayed when we click on page 1
+
+
+
+e.g
+##################################################################
+
+
+ <ContentPage Title="Page 1">
+        <Label Text="Hello , this is page 1"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+    </ContentPage>
+    <ContentPage Title="Page 2">
+        <Label Text="Hello , this is page 2"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+    </ContentPage>
+    <ContentPage Title="Page 3">
+        <Label Text="Hello , this is page 3"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+    </ContentPage>
+    <ContentPage Title="Page 4">
+        <Label Text="Hello , this is page 4"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"/>
+    </ContentPage>
+    
+    
+
+
+############################################
+
+WE can modify the tab bar with some properties,,inside the <TabbedPage> tag
+
+BarBackgroundColor
+BarTextColor
+
+these properties where not being applied due them being in the ContentPage Tage
+SelectedTabColr=
+UnselectedTabColo=
+
+############################################
+
+We can specify Icon for these tabs
+
+<ContentPage Title="Page 1"  IconImageSource="dotnet_bot.svg">
+
+
+We see that the icon is displayed as part of the first tab
+Now the 
+-SelectedTabColr=
+-UnselectedTabColo=
+will work on the icon 
+
+############################################
+
+############################################
+
+############################################
+
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################

@@ -1,0 +1,31 @@
+   ... 
+
+
+Here you can choose a razor , blazor and any other available template
+
+We'll work with the MVC 
+
+............MVC...................... 
+  Model-View-Controller(MVC) is a software design pattern commomly used for developing user 
+  interfaces that divide the related program logic into three interconnected elements.   
+	
+
+Model : Contains data that is represented by the view 
+View  : Is responsible for presenting the model(data) and handle user interactions 
+Controller  : Manages the presentation and model
+
+
+................How MVC works...................
+- when you visit broser
+- You send a Request to the dot net 
+-  Request is sent to controller(e.g the home controller depending on the logic
+- Then graps some data from the database as a model(the data the user is interested in )
+-After that , the model will be passed to a view (what the user interacts with (user interface )
+-And that will get in return 
+
+ USER ----request--->   ## Controller ##   ----data-->   ## Model ##    ----pass-->  ## View ##  ---Response--> USER
+
+
+ A user can still click a button on the view and it'll send a request to the controller and the cycle with repeat 
+
+ 

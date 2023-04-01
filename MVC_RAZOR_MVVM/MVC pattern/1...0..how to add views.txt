@@ -1,0 +1,28 @@
+
+
+create new folder in views....HelloWorld (name should be thesame as it's controller ).....
+				because it's for that controller 
+create views in the HelloWorld folder with thesame name as the actions present
+  -rigth click 
+    -view
+      -razor view empty .... name = Index.cshtml  (example)(....view name should be one of the action name )
+
+
+Index.cshtml
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+we can write c#  and html code  inside of this razor page
+
+
+
+
+-Now we have to change the return type to IActionResult and return view() back in the HelloWorldController class
+
+

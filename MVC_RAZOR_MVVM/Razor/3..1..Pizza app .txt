@@ -1,0 +1,122 @@
+
+
+
+
+
+
+
+ ...................OverView of Razor pages ............................
+
+Create new project
+
+Asp.net core web app ... this one has the razor pages in it 
+
+##########################################################################################################################
+the razor pages are being used alongside supporting files which are shown as underscores
+    -_viewimports.cshtml
+    -_viewstart.cshtml
+
+Pages
+   shared
+      _layout.cshtml
+		contians the content that repeats on each page on the website like the main menu 
+		,the footer , or other element
+
+		-for both to work together the razor page is injected to the _layout.cshtml file through
+		a c# render body line
+
+		    <div class="container">
+        	<main role="main" class="pb-3">
+///...........................................
+         	   @RenderBody()
+///...........................................
+      		  </main>
+  		  </div>
+
+		-this will render the body depending on which page we're at ..e.g index or privacy page
+            
+
+
+##########################################################################################################################
+wwwroot contains the css 
+-this is basically where we have all the static files 
+
+
+-wwwroot
+	images
+		PizzaTime.jpg
+		Pizzas
+
+
+##########################################################################################
+
+Let's access one of the 
+
+index.cshtml
+
+
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+///.................(~ is used to access to wwwroot)..........................
+<img class="mainImage" src="~/images/PizzaTime.jpg" />
+
+///...........................................
+</div>
+
+
+
+##########################################################################################
+the appsettings.json contains ... 
+ -configuration data
+ -connection strings for the database 
+
+appsettings.json 
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+
+
+
+
+##########################################################################################
+
+program.cs
+
+-Add services to the container or configure the http request pipeline
+
+##########################################################################################
+
+
+##########################################################################################
+
+
+##########################################################################################
+
+
+##########################################################################################
+
+
+##########################################################################################
+
+
+##########################################################################################
+
+
+##########################################################################################
+	

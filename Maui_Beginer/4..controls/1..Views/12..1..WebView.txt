@@ -1,0 +1,15 @@
+to add html,css,js file 
+
+-Resources
+	-Raw
+		-index.html
+		-index.js
+		-index.css
+
+
+..........xaml...................
+   <WebView
+        Source="index.html"
+        />
+
+

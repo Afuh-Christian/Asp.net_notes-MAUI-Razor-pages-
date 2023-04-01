@@ -1,0 +1,142 @@
+......
+
+Here we have a sliding window and different options within the 
+sliding window 
+-all those options are paths to diffent pages
+
+
+##################......FlyoutPage type .....##################
+
+-Let's create a new ContentPage and call it FlyoutPageDemo
+
+-We change the type from ContentPage to FlyoutPage 
+#####3
+FlyoutPageDemo.xaml
+//.................................................
+<FlyoutPage 
+//.................................................
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pages.FlyoutPageDemo"
+             Title="FlyoutPageDemo">
+//.................................................
+</FlyoutPage>
+//.................................................
+#####3
+
+FlyoutPageDemo.xaml.cs
+
+namespace Pages;
+//.................................................
+public partial class FlyoutPageDemo : FlyoutPage
+//.................................................
+{
+	public FlyoutPageDemo()
+	{
+		InitializeComponent();
+	}
+}
+
+ 
+
+Let's start building the fly out .... for now without links
+
+###############################..in the FlyoutPageDemo.xaml....###############################################
+
+
+in the 
+FlyoutPageDemo.xaml
+
+-for what is the content of that flyout page
+-NB .... the content here must be asign a title
+<FlyoutPage.Flyout>
+        <ContentPage Title = "Hello">
+            
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+
+-specifies the section where we will have the main section
+
+
+  <FlyoutPage.Detail>
+        <ContentPage>
+            
+        </ContentPage>
+    </FlyoutPage.Detail>
+
+
+#########################
+
+We must specify a content for each section 
+
+   <FlyoutPage.Flyout>
+        <ContentPage>
+            
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <ContentPage>
+            
+        </ContentPage>
+    </FlyoutPage.Detail>
+
+
+
+#########################
+
+
+   <FlyoutPage.Flyout>
+        <ContentPage Title="My App" BackgroundColor="pink">
+            <Label Text="Flyout" 
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   />
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <ContentPage>
+            <Label Text="Detail" 
+                  HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   />
+
+        </ContentPage>
+    </FlyoutPage.Detail>
+ 
+
+This means we can edit some properties of the flyout via the ContentPage
+#########################
+
+App.xaml.cs 
+
+MainPage = new FlyoutPageDemo();
+
+############################################
+
+We have options that we can use on the <FlyoutPage> .... to contro the behavior
+
+-FlyoutLayoutBehavior = ""
+          "split" ... Flyout on left side and details on right side of screen...
+           many others
+           -the screen size is too small for some of the options to work on them		
+
+
+
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+
+############################################
+

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Controls.MainPage">
+
+    <ScrollView>
+        <StackLayout>
+       
+        <BoxView
+            Color="Orange"
+            HeightRequest="200"
+            WidthRequest="100"
+            >
+        </BoxView>
+
+        <Label
+            Text="Hello" 
+            HorizontalOptions="Center"
+            FontSize="60"
+            VerticalTextAlignment="Center"
+            />
+
+        <Ellipse Fill ="DarkRed"
+                 HeightRequest="200"
+                 WidthRequest="100"
+                 Stroke="DarkGreen"
+                 StrokeThickness="10"
+               />
+
+        <Line 
+            X1="0"
+            Y1="0"
+            X2="100"
+            Y2="50"
+             Stroke="Black"
+            StrokeThickness="10"/>
+
+            <Rectangle
+            Fill="blue"
+            HeightRequest="100"      
+            WidthRequest="100"       
+               Stroke="black"    
+                StrokeThickness="10"    
+                RadiusX="10"          
+                RadiusY="10"  
+                
+            />
+
+            <Polygon 
+                Fill="Blue" 
+                Points="40,10 70,80 10,50" 
+                Stroke="black"
+                StrokeThickness="10"
+              
+                />
+
+
+            <Polygon 
+                Fill="red" 
+                Points="40,10 70,80 10,50" 
+                Stroke="Green"
+                StrokeDashArray="1,1"
+                StrokeDashOffset="6"
+                StrokeThickness="5"
+                />
+
+            <Polyline
+                Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+                Stroke="Red"
+                />
+
+            <Polyline
+                Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+                Fill="Blue"
+                Stroke="Red"
+                StrokeThickness="10"
+                />
+
+
+            <Path
+                Aspect="Uniform"
+                Data="M 10,100 L 100,100 100,50Z"  
+                HorizontalOptions="Center" 
+                Stroke="Black"
+                />
+
+            <Border
+                Stroke="#C49B33"
+                StrokeThickness="4"
+                Background ="blue"
+                Padding="16,8"
+                HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="40,0,0,40"/>
+                </Border.StrokeShape>
+                <Label 
+                    Text="Welcome Bro"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    />
+            </Border>
+
+            <Frame
+                Margin="10"
+                BackgroundColor="Pink"
+                >
+            <Image Source="dotnet_bot.svg"
+                     Aspect="Fill"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   />
+
+            </Frame>
+
+
+            <WebView 
+                 HeightRequest="10000"
+                Source="https://www.youtube.com/"
+                 
+                />
+
+
+
+
+
+
+
+
+            <!-- RadiusX="10"
+            RadiusY="10" 
+              HeightRequest="100"
+                WidthRequest="100"
+            -->
+
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

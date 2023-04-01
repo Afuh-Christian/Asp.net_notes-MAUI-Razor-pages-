@@ -1,0 +1,27 @@
+..................
+
+
+ <Polygon 
+                Fill="Black" 
+                Points="40,10 70,80 10,50" 
+                Stroke="DarkBlue"
+                StrokeThickness="5"
+              
+                />
+
+
+.........Points of the x,y axis.....................
+.
+Points="40,10 70,80 10,50" 
+
+
+......................................
+
+       <Polygon 
+                Fill="red" 
+                Points="40,10 70,80 10,50" 
+                Stroke="Green"
+                StrokeDashArray="1,1"
+                StrokeDashOffset="6"
+                StrokeThickness="5"
+                />

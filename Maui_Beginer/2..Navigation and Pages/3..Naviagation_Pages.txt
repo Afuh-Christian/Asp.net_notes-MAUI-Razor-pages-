@@ -1,0 +1,117 @@
+...........
+.........
+
+Navigation.pushAsync();  ... allows us to add pages to a nav stack
+Navigation.popAsync(); .... vise versa
+
+...
+
+###########################################################
+Let's go back and Make MainPage the inital page and add a button that takes us to the ContentPageDemo
+
+We need to create a Navigation stack for the pages to be added to or removed from 
+
+App.xaml.cs
+//..................we have created the navigation stack with initial page as "new MainPage()"................................
+MainPage = new NavigationPage(new MainPage());
+//..................................................
+
+
+Navigation.PushAsync(new ContentPageDemo());........this add ContentPageDemo to the Navigation Stack
+
+MainPage.xaml.cs
+
+ <Button 
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+/...................................................              
+  Clicked="goto_ContentPageDemo"
+/...................................................
+                HorizontalOptions="Center" />
+
+MainPage.cs
+
+namespace Pages;
+
+public partial class MainPage : ContentPage
+{
+	int count = 0;
+
+	public MainPage()
+	{
+		InitializeComponent();
+	}
+
+	private void goto_ContentPageDemo(object sender, EventArgs e)
+	{
+//.......................................................
+		Navigation.PushAsync(new ContentPageDemo());
+//.......................................................
+	}
+}
+
+
+
+
+###########################################################
+How to edit the Nav Bar........
+
+.........When we successfull move to the Contentpage .........
+
+There's a default nav bar like in as in html 
+-a default back button ... should be calling the Navigation.PopAsync(); method
+-a defualt title...probably gotten from the  
+
+Here's how we can edit the nav Bar in the App.xaml.cs
+
+-create an object of the NavigationPage 
+-access the methods in this NavigationPage through that object
+-now assing that obect to the MainPage
+
+App.xaml.cs
+
+
+namespace Pages;
+
+public partial class App : Application
+{
+	public App()
+	{
+		InitializeComponent();
+
+//...........................................................
+var navPage = new NavigationPage(new MainPage());
+
+navPage.BarBackground = Colorls.Chocolate;
+navPage.BarTextColor = Colors.White;
+
+MainPage = navPage;
+//...........................................................
+
+
+    }
+}
+
+###################################################
+
+We can add  a button in the content page that takes us back to 
+the MainPage .... by still using the 
+//............................................
+Navigation.PushAsync(new MainPage);
+//............................................
+The we put this in an event handle
+it will also add to the Navigation stack we had
+We can do this an reference to Many other pages
+
+
+NB...by doing this we are creating another new instance of the MainPage
+  ....But using the NavigationPage.Pop or the back button , 
+      we return the the Particular instance we left from  
+
+	14:00
+
+
+
+
+

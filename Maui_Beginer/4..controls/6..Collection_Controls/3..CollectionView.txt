@@ -1,0 +1,48 @@
+.............Allow us to manage Data List...................
+
+-------------------------------------------
+SelectionMode...in the <Collection> view to set it to be able to select items
+-Multiple.. many items at a time
+-Single...one item at a time
+-None..
+---------------------------------------------
+we can also create columns with this control
+---------------------------------------------
+
+---------------------------------------------
+
+
+
+
+    <CollectionView
+        SelectionMode="Single"
+        >
+        <CollectionView.ItemsSource>
+            <x:Array  Type="{x:Type x:String}">
+                <x:String>This is mine</x:String>
+                <x:String>All of them</x:String>
+                <x:String>Nothing much</x:String>
+                <x:String>How to eat</x:String>
+                <x:String>Very cool</x:String>
+            </x:Array>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <Frame
+                             Margin="10"
+                            BorderColor="DarkGray"
+                            CornerRadius="5"
+                            HasShadow="True" 
+                            HeightRequest="100" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            >
+                        <Label Text="{Binding .}"/>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        
+        
+    </CollectionView>

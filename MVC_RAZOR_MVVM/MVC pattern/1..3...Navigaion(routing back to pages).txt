@@ -1,0 +1,21 @@
+
+
+go to 
+
+views
+  shared
+     _layout.cshtml  ........ you'll see this in the code below .... use the example convention to add the path you which to direct to 
+
+ <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+
+
+asp-area
+asp-controller =  controller name
+asp-action = action name

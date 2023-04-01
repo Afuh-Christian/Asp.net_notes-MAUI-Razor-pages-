@@ -1,0 +1,156 @@
+
+
+
+
+
+
+
+lets add a link for list and  create
+
+shared
+      _layout.cshtml
+
+ </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HelloWorld" asp-action="Create">Create Dog</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HelloWorld" asp-action="Index">Dog List</a>
+                        </li>
+
+
+Controller
+    HelloworldController
+
+   public Helloworld...........
+
+     public IActionResult Create()
+        {
+            return View();
+            //we can also open a different view by sending in a different filename 
+        }
+  .......
+
+NB...we can also have return Vew("CreateDog.cshtml")
+
+
+
+Now we create a form in order to create a new dog and send form data from view to controller 
+
+views
+    Helloworld
+         create.cshtml
+
+@model DogViewModel
+            
+              <h1> Create <h1>
+
+                 <form asp-controller="HelloWorld" asp-action="CreateDog" method="post">
+                   
+                        Dog Name
+                        <input asp-for=Name type="text" class="form-control" />
+                   
+                   
+                       Dog Age
+                        <input asp-for=Age type="number" class="form-control" />
+
+			 <button type="submit" class="btn btn-primary">Save</button>
+
+                </form>
+
+btn = button
+btn-primary = colour
+
+
+
+we will write some boostrap code here for the styling 
+press ctrl + k + D to rearrange it if it doesn't works
+
+
+
+How we can send the data from the form to our controller
+
+..............form submittion.........................
+
+- we create a new action in HelloWorldController
+
+
+//now we will use data binding to save the information from the form
+
+     public IActionResult Create()
+        {
+            var dogVm = new DogViewModel();
+            return View(dogVm);
+           
+        }
+
+        public IActionResult CreateDog(DogViewModel dogViewModel)  //Data which we enter in the form
+        {
+           // return View("Index");.........this gives an error because we haven't passsed any object 
+         // We use the redirect
+/...................................
+           return RedirectToAction(nameof(Index));
+/...................................
+        }
+
+We have sent the info from view to controller 
+
+Now let's save the data
+
+
+
+For now we will create a list and save the dogs to that list at runtime 
+
+Contoller
+        HelloWorldController
+                  public.......{
+/.......... We make it static from getting back to null everytime we excite the Index................
+   private static List<DogViewModel> dogs = new List<DogViewModel>();
+/..........................
+
+    public IActionResult Index()
+        {
+            
+            return View(dogs);
+        }
+
+
+................To render this on the index page ..............
+
+views
+     HelloWorld
+               Index.cshtml 
+@model List<FirstMVCApp.Models.DogViewModel>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@foreach(var dog in Model)
+{
+    
+<h1>
+    This is  @dog.Name
+</h1>
+
+<p> @dog.Name is @dog.Age yrs old</p>
+}
+
+
+
+HelloWorldController
+
+    
+        public IActionResult CreateDog(DogViewModel dogViewModel)  //Data which we enter in the form
+        {
+            // return View("Index");
+//........................................................
+            dogs.Add(dogViewModel);
+//........................................................
+            return RedirectToAction(nameof(Index));
+        }
+

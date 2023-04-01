@@ -1,0 +1,34 @@
+..........
+
+Allows us to add borders to any element within
+
+  <Border>
+                <Label 
+                    Text="Welcome Bro"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </Border>
+
+
+
+The border is not visible for now because nothing has been asigned to 
+it
+
+
+            <Border
+                Stroke="#C49B33"
+                StrokeThickness="4"
+                Background ="blue"
+                Padding="16,8"
+                HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="40,0,0,40"/>
+                </Border.StrokeShape>
+                <Label 
+                    Text="Welcome Bro"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    />
+            </Border>
+            

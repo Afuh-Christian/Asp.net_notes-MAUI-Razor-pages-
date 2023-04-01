@@ -1,0 +1,45 @@
+....
+can set a value in a slider element 
+-----------------------------------------------------------
+ValueChanged ... an event ... when an element is changed
+------------------------------------------------------------
+
+
+-----------------------------------------
+you can create a label element to let you know what the slider controll is 
+
+assign the text of the label according the the  valueChanged
+
+---------------------------------------------
+
+
+#########################.........cs............###################3
+
+   private void slider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        labelslider.Text = slider.Value.ToString();
+    }
+
+###################...........xaml............################3
+
+        <Slider
+            x:Name="slider" 
+            Minimum="0" 
+            Maximum="10" 
+            MinimumTrackColor="Yellow" 
+            MaximumTrackColor="Green" 
+            ThumbColor="DarkRed" 
+            ValueChanged="slider_ValueChanged"
+            />
+        <Label 
+            x:Name="labelslider"/>
+
+
+
+
+
+
+
+
+
+

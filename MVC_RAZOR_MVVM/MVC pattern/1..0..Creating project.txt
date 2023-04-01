@@ -1,0 +1,84 @@
+We'll be taking the MVC 
+
+
+-Project name 
+-build project
+-install certificates
+
+#################################################
+............CONTROLLERS .............................
+
+using FirstMVCApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+
+namespace FirstMVCApp.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+//.................................thesse functions are all actions ...........................................
+        public string Index()  ###3### from index.cshtml  ...not and IActionresult
+        {
+            return " hello world  ";
+        }
+
+        public IActionResult Privacy() ###3### from private.cshtml
+        {
+            return View();
+        }
+//............................................................................
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+}
+
+
+
+
+.-creating a home controller 
+
+-right click on controller 
+-add items 
+-MVC controller emty
+   give it a name below ... helloworldController.cs    ##Adding Controller at the end of the name is a convention
+
+########################
+for this new controller to work . you'll have to set it as default 23:07  
+
+Programs.cs
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
+
+Home as in HomeController 
+Index as public IsActionResult Index()
+       {return veiw}
+
+
+we change the pattern name  from home to HelloWorld as in the HelloWorldController you created
+Or we can add the link on the site after we run it
+
+
+To display the other action present in the controller 
+
+add Helloworld/hello to it
+
+https://localhost:7129/Helloworld/hello
+
+
+

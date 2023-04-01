@@ -1,0 +1,13 @@
+............
+
+
+
+
+Aspect...how the image will be displayed according to the device 
+
+
+  <Image Source="dotnet_bot.svg"
+                     Aspect="Fill"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   />

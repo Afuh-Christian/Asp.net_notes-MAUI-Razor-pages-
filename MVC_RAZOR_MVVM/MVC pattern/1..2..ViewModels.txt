@@ -1,0 +1,79 @@
+ViewModel is different from a view in that it only displays
+
+...it's a class made to be passed to a view
+-contains only the data the view is going to display
+
+Lets add a model  to our models folder 
+class  name .... DogViewModel
+
+namespace FirstMVCApp.Models
+{
+    public class DogViewModel
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        
+    }
+
+}
+
+
+###############################################
+--Nb you have to acess the model in the controller before they can be passed the the views so in can be rendered out 
+
+Controllers
+HelloWorldControllers 
+
+
+using Microsoft.AspNetCore.Mvc;
+//................................
+using FirstMVCApp.Models;
+//................................
+
+namespace FirstMVCApp.Controllers
+{
+    public class HelloWorldController : Controller
+    {
+        public IActionResult Index()
+        {
+//................................//................................
+            DogViewModel doggo = new DogViewModel()
+            {
+                Name =  "sif", Age = 27
+            }; 
+//.............Passing the created dog to the view...................  
+            return View(doggo);
+        }
+//................................//................................//................................
+
+        public string Hello()
+        {
+            return "who's there";
+        }
+    }
+}
+
+
+
+################################################################################
+Now to display in the view
+
+Index.cshtml
+//................................//................................
+@model FirstMVCApp.Models.DogViewModel
+//.......................Model property is used to access the elements.........//................................
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+//................................//................................
+<h1>
+    This is  @Model.Name
+</h1>
+
+<p> @Model.Name 
+
+//................................//................................

@@ -1,0 +1,125 @@
+
+>>>>>>>>>>>>
+we will create a control of this type changing the control label 
+
+#####################################3......CarouselView........########################
+-we need a data source .... there are different ways to assign the data
+ source 
+
+-----------------------------------------------
+<CarouselView.ItemsSource> = data source
+-----------------------------------------------
+
+
+
+ <CarouselView>
+            <CarouselView.ItemsSource>
+                <x:Array  Type="{x:Type x:String}">
+                    <x:String>This is mine</x:String>
+                    <x:String>This is mine</x:String>
+                    <x:String>This is mine</x:String>
+                    <x:String>This is mine</x:String>
+                    <x:String>This is mine</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+        </CarouselView>
+
+#############################
+------------------------------------------------------
+<CarouselView.ItemTemplate> = How the items will be displayed 
+------------------------------------------------------
+Binding....links each of the elements 
+--------------------------------------------------------
+###
+
+
+        <CarouselView>
+            <CarouselView.ItemsSource>
+                <x:Array  Type="{x:Type x:String}">
+                    <x:String>This is mine</x:String>
+                    <x:String>All of them</x:String>
+                    <x:String>Nothing much</x:String>
+                    <x:String>How to eat</x:String>
+                    <x:String>Very cool</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+            <CarouselView.ItemTemplate>
+                
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame
+                            Margin="10"
+                            BorderColor="DarkGray"
+                            CornerRadius="5"
+                            HasShadow="True" 
+                            HeightRequest="100" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            >
+                            <Label Text="{Binding .}"/>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+                
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+
+##############...IndicatorView....##################
+
+To know the position of the items in the CarouselView
+
+--------------------------------------------------------------
+IndicatorView  === place in the CarouselView as an identifier
+--------------------------------------------------------------
+x:Name == placed in the IndicatorView as a reference to that IndicatorView 
+--------------------------------------------------------------------
+
+
+
+
+        <CarouselView
+            IndicatorView="Indicator_for_C"
+            >
+            <CarouselView.ItemsSource>
+                <x:Array  Type="{x:Type x:String}">
+                    <x:String>This is mine</x:String>
+                    <x:String>All of them</x:String>
+                    <x:String>Nothing much</x:String>
+                    <x:String>How to eat</x:String>
+                    <x:String>Very cool</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+            <CarouselView.ItemTemplate>
+                
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame
+                            Margin="10"
+                            BorderColor="DarkGray"
+                            CornerRadius="5"
+                            HasShadow="True" 
+                            HeightRequest="100" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            >
+                            <Label Text="{Binding .}"/>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+                
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+    <IndicatorView 
+        x:Name="Indicator_for_C"
+        HorizontalOptions="Center"
+        IndicatorColor="LightGray"
+        SelectedIndicatorColor="DarkGray"/>
+
+
+
+
+
+
+

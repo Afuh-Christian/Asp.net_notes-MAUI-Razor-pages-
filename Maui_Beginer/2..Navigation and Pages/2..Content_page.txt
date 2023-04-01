@@ -1,0 +1,58 @@
+
+
+Is the most used because it allows 
+-Layout 
+-Controlls
+
+Things to know
+-It can only contain one root element ... that's why we always need layouts to group the other elements inside
+
+
+#################################
+Lets's add a new ContentPageDemo and make it the initial Page
+
+NB...You can't create a new page and call it ContenPage... Because it's already exist and we are creating other pages  from it
+.....Alway restart you program when you are creating a new page
+
+ContentPage.xaml
+ ContentPage.xaml.cs
+
+In the App.xaml.cs 
+//...............................
+MainPage = new ContentPageDemo();
+//...............................
+
+#################################
+
+NB create a ContentPage from the root project before moving to a folder eg views 
+
+#################################
+
+we can set background color from the <ContentPage> tag
+
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pages.ContentPageDemo"
+             Title="ContentPageDemo"
+             
+//..........................................
+             BackgroundColor="Pink"
+//..........................................
+             >
+    <StackLayout>
+        <Label Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
+#################################
+
+#################################
+
+#################################
+
+#################################
+
+#################################
+

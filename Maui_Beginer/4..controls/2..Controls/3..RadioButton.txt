@@ -1,0 +1,66 @@
+
+############.......xaml......############
+-----------------
+Content = Text representing the button 
+-----------------
+
+-----------------
+
+-----------------
+############.......cs......############
+e.value ... to display true if button is clicked (choosen) 
+$....to add a variable within a string
+
+    private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        DisplayAlert("RadioButton", $"Changed: {e.Value}", "ok");
+    }
+
+-----------------
+######################......xaml.......####################################################################
+
+  <RadioButton
+            Content="Option 1" 
+            GroupName="gpq"
+            CheckedChanged="RadioButton_CheckedChanged"/>
+-----------------
+##########################################################################################
+
+NB...To group the buttons differently.....
+
+
+##########################################################################################
+
+if we want two or more items to be selected at once
+
+and in xaml 
+
+-----------
+GroupName = ....add this to the radio btns you want to have thesame property
+
+ <RadioButton
+            Content="A_Option 1" 
+            GroupName="g__1"
+            CheckedChanged="RadioButton_CheckedChanged"/>
+
+        <RadioButton
+            Content="A_Option 2" 
+            GroupName="g__1"
+            CheckedChanged="RadioButton_CheckedChanged"/>
+
+        <RadioButton
+            Content="B_Option 3" 
+            GroupName="gpq"
+            CheckedChanged="RadioButton_CheckedChanged"/>
+
+        <RadioButton
+            Content="B_Option 4" 
+            GroupName="gpq"
+            CheckedChanged="RadioButton_CheckedChanged"/>
+
+
+##########################################################################################
+
+-----------------
+
+-----------------

@@ -1,0 +1,24 @@
+
+
+
+
+
+#################....xaml....##########################33
+
+
+        <SearchBar
+            x:Name="searhControl"
+            SearchButtonPressed="searhControl_SearchButtonPressed"
+            
+            />
+
+###############33......cs......######################3
+
+    private void searhControl_SearchButtonPressed(object sender, EventArgs e)
+    {
+        DisplayAlert("Search", $"Searched: {searhControl.Text}","ok");
+    }
+
+---------------=--------------------------------------
+searhControl.Text...to get the text typed the the search box
+---------------=--------------------------------------

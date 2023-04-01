@@ -1,0 +1,29 @@
+.......
+
+displays text to the user 
+
+############################
+    <Label
+            Text="Hello" 
+            HorizontalOptions="Center"
+            FontSize="60"
+            />
+###########################
+
+FontSize has some defualt values that you can use that will change with respect to the device your respect
+
+
+horizontaltextAlignment
+###########################
+
+
+###########################
+
+
+###########################
+
+
+###########################
+
+
+###########################

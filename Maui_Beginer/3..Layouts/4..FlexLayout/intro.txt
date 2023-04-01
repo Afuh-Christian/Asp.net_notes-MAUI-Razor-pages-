@@ -1,0 +1,94 @@
+
+
+-Can arrange eleement ... Horizontally and Vertically .. in a stack
+-Can also wrap...if there are too many for a row or column
+-can controll orientation,alignment and adapt to different screen sizes
+
+
+In the <flexLayout>..we have properties
+ - direction
+ - AlignItems
+
+
+  <FlexLayout
+        Direction="RowReverse"
+        Opacity=".7"
+        >
+        <Button
+            Text="hey"/>
+        <Button
+            Text="you"/>
+        <Button
+            Text="there"/>
+        <Button
+            Text="come"/>
+        <Button
+            Text="now"/>
+    </FlexLayout>
+
+################################################
+
+-FlexLayout.Grow ="1" ... to use up all the available space btw 
+      two elements
+
+NB... -<FlexLayout FlexLayout.Grow ="1" >
+
+
+################################################
+Nesting FlexLayout
+
+
+
+   <FlexLayout
+        Direction="Column"
+        >
+        <!-- Header -->
+        <Label
+            Text="Header"
+            FontSize="18"
+            BackgroundColor="Aqua"
+            HorizontalTextAlignment="Center"/>
+        
+        
+        <!-- body -->
+        <FlexLayout 
+            FlexLayout.Grow="1"
+         
+            >
+
+            <!-- Content-->
+            <Label
+               Text="CENTER POLE"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+                FlexLayout.Grow="1"
+                 FontSize="18"
+             
+                />
+
+            <BoxView 
+                
+                FlexLayout.Basis="50"
+                FlexLayout.Order="-1"
+                Color="Blue"
+                />
+
+            <BoxView 
+                FlexLayout.Basis="50"
+                Color="Green"
+                />
+
+
+
+
+        </FlexLayout>
+
+            <!-- Footer -->
+        <Label
+            Text="Footer"
+            FontSize="18"
+            BackgroundColor="Yellow"
+            HorizontalTextAlignment="Center"/>
+
+    </FlexLayout>
+

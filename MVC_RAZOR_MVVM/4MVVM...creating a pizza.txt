@@ -1,0 +1,507 @@
+..........MVVM..........Model  view  View Model.............
+
+Helps us separate the presentation of our website so that our ui view is separated from developement of
+ buisness logic
+Making the frontend completely independent from any specific model platform 
+
+
+
+VIEW --presentation
+
+VIEW MODEL --presentation logic 
+
+MODEL --buisness logic $ data
+
+
+
+VIEW  ----data binding-----> VIEW MODEL ----data binding----->  VIEW 
+
+ VIEW MODEL  ----update----->  MODEL  ----update----->  VIEW MODEL
+
+
+
+
+
+............this means there's no direct coms between model and view  ....................
+
+
+
+VIEW  ----data binding-----> VIEW MODEL ----update----->  MODEL 
+
+ MODEL  ----update----->  VIEW MODEL ----data binding----->  VIEW 
+
+
+
+
+
+
+
+
+##############################################################################################
+...................................
+
+
+-create folder 
+     Models
+	PizzasModel.cs  .... class ....we used a different name because we Had a PizzaModel class that  was auto created when we where creating the razor pages
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+NB...... Pages
+		Pizza.cshtml
+			Pizza.cshtml.cs
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace RazorPizza.Pages
+{
+
+//..................................................
+    public class PizzaModel : PageModel
+//..................................................
+    {
+        public void OnGet()
+        {
+        }
+    }
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+##############################################################################################
+
+Models
+	PizzasModel.cs
+.............................................
+
+namespace RazorPizza.Models
+{
+    public class PizzasModel
+    {
+        public string ImageTitle { get; set; }
+        public string PizzaName { get; set; }
+
+        public float price { get; set; } = 2;
+
+        public bool Peperoni { get; set; }
+
+        public bool TomatoSuase { get; set; }
+
+        public bool Cheese { get; set; }
+
+        public bool Mushroom { get; set; }
+
+        public bool Pineapple { get; set; }
+
+        public bool Ham { get; set; }
+
+        public bool Tuna  { get; set; }
+
+        public bool Beef { get; set; }
+
+        public float FinalPrice { get; set; }
+    }
+}
+
+
+
+
+##############################################################################################
+
+Now we will use the custom view model to set up the pizza 
+
+Forms
+	CustomPizza.cshtml
+		CustomPizza.cshtml.cs
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+//..................................................
+using RazorPizza.Models;
+//..................................................
+
+namespace RazorPizza.Pages.Forms
+{
+    public class CustomPizzaModel : PageModel
+    {
+//..................................................
+        public PizzasModel pizza { get; set; }
+//..................................................
+        public void OnGet()
+        {
+        }
+    }
+}
+
+
+
+##############################################################################################
+Now we use databinding to access what we have in our form view
+
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPizza.Models;
+
+namespace RazorPizza.Pages.Forms
+{
+    public class CustomPizzaModel : PageModel
+    {
+//.............................................
+        [BindProperty]
+//........................................
+        public PizzasModel Pizzas { get; set; }
+        public void OnGet()
+        {
+        }
+    }
+}
+
+
+Now this will allow us to create pizza or access pizza through our CustomPizza.cshtml view
+##############################################################################################
+
+Now we will instantiate some of the pizza object attributes created in the CustomPizza.cshtml.cs 
+through the CustomPizza.cshtml 
+
+CustomPizza.cshtml
+.......................................
+
+@page
+@model RazorPizza.Pages.Forms.CustomPizzaModel
+@{
+}
+
+  <div>
+      <h1>Create your own Pizza</h1>
+      <form method="post">
+///.........................Pizza.PizzaName....Pizza=object created in CustomPizzamodel.cshtml.cs,PizzaName =Attribute.........................................
+          <input type="text" asp-for="Pizza.PizzaName" />
+//..................................................................
+      </form>
+  </div>
+
+
+
+
+
+##############################################################################################
+
+@page
+@model RazorPizza.Pages.Forms.CustomPizzaModel
+@{
+}
+
+
+
+<a class="nav-link text-dark" asp-area="" asp-page="/Checkout/Checkout">Checkout</a>
+
+
+  <a class="nav-link text-dark" asp-area="" asp-page="/Pizza">Pizzas</a>
+
+
+  <div class="text-center container">
+      <h1>Create your own Pizza</h1>
+      <form method="post">
+          <input type="text" asp-for="Pizza.PizzaName" placeholder="create your pizza"/><br />
+          <input type="checkbox" asp-for="Pizza.TomatoSuase" placeholder="Tomato Sauce"/>Tomato suace
+            <br />
+          <input type="checkbox" asp-for="Pizza.Beef" placeholder="Beef"/>Beef
+           <br />
+          <input type="checkbox" asp-for="Pizza.Ham" placeholder="Ham"/>Ham <br />
+          <input type="checkbox" asp-for="Pizza.Mushroom" placeholder="Mushroom"/>Mushroom <br />
+          <input type="checkbox" asp-for="Pizza.Pineapple" placeholder="Pineapple"/>Pineapple <br />
+          <input type="checkbox" asp-for="Pizza.Peperoni" placeholder="Peperoni"/>Peperoni <br />
+          <input type="checkbox" asp-for="Pizza.Cheese" placeholder="Cheese"/>Cheese <br />
+          <input type="checkbox" asp-for="Pizza.Tuna" placeholder="Tuna"/>Tuna <br />
+        
+
+
+          <button type="submit" class="btn btn-primary nt-1">Order My Pizza</button>
+      </form>
+  </div>
+
+for now nothing happens 
+##############################################################################################
+
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPizza.Models;
+
+namespace RazorPizza.Pages.Forms
+{
+    public class CustomPizzaModel : PageModel
+    {
+        [BindProperty]
+        public PizzasModel Pizza { get; set; }
+//..................................................................
+        public float PizzaPrice { get; set; }
+//..................................................................
+        public void OnGet()
+        {
+        }
+//..................................................................
+        public IActionResult OnPost() ////should start with capital O
+        {
+
+        }
+//..................................................................
+    }
+}
+for now the onPost gives an error since the return type has not been specified 
+
+
+IActionResult is a base strucure of an action result
+              -It specifies how a response is going to be given for a specific request
+	      -It a container for action results 
+		-ActionResult return type can involve various http
+		
+
+REQUEST  -> IACTIONRESULT(interface) => ACTIONRESULT(abstract classes)  -> RESPONSE
+
+##############################################################################################
+http status codes 
+
+1xx   informative...eg server has recieved request
+2xx   successfull...eg request was successfull and browser has recieved the information
+3xx   redirection....eg you have been redirected at the completion of the request requires further action
+4xx   client error...eg file not found , page unavailable 
+5xx   server error....eg where the request appears to be valid but the server could not complete the request
+
+
+
+
+
+
+
+
+##############################################################################################
+
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPizza.Models;
+
+namespace RazorPizza.Pages.Forms
+{
+    public class CustomPizzaModel : PageModel
+    {
+        [BindProperty]
+        public PizzasModel Pizza { get; set; }
+
+        public float PizzaPrice { get; set; }
+        public void OnGet()
+        {
+        }
+//..................................................................
+        public IActionResult OnPost()
+        {
+            PizzaPrice = Pizza.BasePrice;
+
+            if (Pizza.TomatoSuase) PizzaPrice += 1;
+            if (Pizza.Cheese) PizzaPrice += 1;
+            if (Pizza.Tuna) PizzaPrice += 1;
+            if (Pizza.Ham) PizzaPrice += 1;
+            if (Pizza.Pineapple) PizzaPrice +=10 ;
+            if (Pizza.Mushroom) PizzaPrice += 1;
+            if (Pizza.Peperoni) PizzaPrice += 1;
+            if (Pizza.Beef) PizzaPrice += 1;
+
+//..................................................................
+           return RedirectToPage("/Checkout/Checkout",new {Pizza.PizzaName,PizzaPrice});
+//..................................................................
+            
+        }
+//..................................................................
+    }
+}
+
+NB ..... new {Pizza.PizzaName,PizzaPrice} is been passed to the checkout.cshtml
+
+
+##############################################################################################
+now in the checkout.cshtml.cs
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace RazorPizza.Pages.Checkout
+{
+//..................................
+    [BindProperties(SupportsGet = true)]
+//..................................
+    public class CheckoutModel : PageModel
+    {
+ //..................................
+        
+        public string ImageTitle { get; set; }
+
+
+        public string PizzaName { get; set; }
+
+        public float PizzaPrice { get; set; }
+
+//..................................
+
+
+        public void OnGet()
+        {
+        }
+    }
+}
+
+NBS
+these two attributes created 
+ public string PizzaName { get; set; }
+
+        public float PizzaPrice { get; set; }
+are necessary because they where being passed 
+
+
+Nb.......the OnGet is for getting data 
+.........We  [BindProperties(SupportsGet = true)] to explicitely allow it to be able to get variables from the CustomPizza.cshtml.cs
+.......that were sent through the return RedirectToPage("/Checkout/Checkout",new {Pizza.PizzaName,PizzaPrice});
+
+
+
+
+
+
+
+
+##############################################################################################
+checkout.cshtml.cs
+.............................................
+           
+        using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace RazorPizza.Pages.Checkout
+{
+    [BindProperties(SupportsGet = true)]
+    public class CheckoutModel : PageModel
+    {
+           
+        
+        public string ImageTitle { get; set; }
+        public string PizzaName { get; set; }
+
+        public float PizzaPrice { get; set; }
+
+
+        public void OnGet()
+        {
+            if(string.IsNullOrWhiteSpace(PizzaName))
+            {
+                PizzaName = "Custom";
+            }
+
+            if (string.IsNullOrWhiteSpace(ImageTitle))
+            {
+                ImageTitle = "Create";  //Actual name of a present pizza picture file...Create.png
+            }
+
+        }
+    }
+}
+
+
+
+
+##############################################################################################
+checkout.cshtml
+
+
+
+@page
+@model RazorPizza.Pages.Checkout.CheckoutModel
+@{
+}
+
+
+   <h1>Your Order!</h1>
+   <div >
+       <div>
+           <img class="m-100" asp-append-version="true"/>
+       </div>
+
+<a class="btn alert-primary mt-1 mx-auto" asp-area="" asp-page="/ThankYou">Confirm order</a>
+   </div>
+ 
+NB....asp-append-version="true"  will make sure the user does not have to refresh the page 
+	when we make changes to the css or image itself etc
+
+
+How do we customize this page base on properties from our 
+##############################################################################################
+checkout.cshtml.cs
+
+
+@page
+@model RazorPizza.Pages.Checkout.CheckoutModel
+@{
+}
+
+
+   <h1>Your Order!</h1>
+   <div >
+       <div>
+           <img class="m-100" asp-append-version="true"/>
+//..............................................................
+		<p> @Model.PizzaName </p>
+           <p>Total @Model.PizzaPrice$ </p><br />
+//..............................................................
+           
+       </div>
+
+<a class="btn alert-primary mt-1 mx-auto" asp-area="" asp-page="/ThankYou">Confirm order</a>
+   </div>
+
+
+Now to get the Image .....
+##############################################################################################
+checkout.cshtml
+
+
+
+   <h1>Your Order!</h1>
+//.......................................................................................
+@{
+    var imagePath = "~/images/Pizzas/" + (@Model.ImageTitle + ".png");
+}
+//.......................................................................................
+
+   <div >
+       <div>
+//.......................................................................................
+           <img src=@imagePath  class="m-100" asp-append-version="true"/>
+//.......................................................................................
+
+		<p> @Model.PizzaName </p>
+           <p>Total @Model.PizzaPrice$ </p><br />
+
+           
+       </div>
+
+<a class="btn alert-primary mt-1 mx-auto" asp-area="" asp-page="/ThankYou">Confirm order</a>
+   </div>
+
+
+
+
+##############################################################################################
+
+##############################################################################################
+
+##############################################################################################
+
+##############################################################################################
+##############################################################################################
+
+##############################################################################################
+
+
+##############################################################################################
+
+##############################################################################################

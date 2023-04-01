@@ -1,0 +1,61 @@
+.......................almost same......
+does not need to be in a stack layout
+displays items from top - down
+
+also has
+-data source 
+-how it'll be displayed 
+
+
+--------------------------------------------------------------------
+<ViewCell> ... will allow use to customize how each row will be 
+--------------------------------------------------------------------
+HasUnevenRows ... a boolean in the <ListView> so the items should be displayed in a better way 
+---------------------------------------------------------------------------------------------
+
+
+    <ListView
+        HasUnevenRows="True"
+        >
+        <ListView.ItemsSource>
+           
+                <x:Array  Type="{x:Type x:String}">
+                    <x:String>This is mine</x:String>
+                    <x:String>All of them</x:String>
+                    <x:String>Nothing much</x:String>
+                    <x:String>How to eat</x:String>
+                    <x:String>Very cool</x:String>
+                </x:Array>
+            
+        </ListView.ItemsSource>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Frame
+                             Margin="10"
+                            BorderColor="DarkGray"
+                            CornerRadius="5"
+                            HasShadow="True" 
+                            HeightRequest="100" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            >
+                            <Label Text="{Binding .}"/>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+
+
+
+
+
+
+
+
+
+

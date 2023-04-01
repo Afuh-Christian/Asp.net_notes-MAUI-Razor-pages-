@@ -1,0 +1,200 @@
+
+
+
+################################...1 Veiwmodel...##########################
+ViewModel
+   MainViewModel.cs
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+
+namespace MVVM_databing.ViewModel
+{
+    public partial class MainViewModel : ObservableObject
+    {
+
+
+
+        public MainViewModel()
+        {
+            Items = new ObservableCollection<string>();
+        }
+
+        //.....to get total items.....returning Items from INotifyProperchanged
+        [ObservableProperty]
+        ObservableCollection<string> items;
+
+        //.....to get text......returning Text from INotifyProperchanged
+        [ObservableProperty]
+        string text;
+
+        //.....some type of action listerner .... to add items 
+        [ICommand]
+        void Add()
+        {
+            if (string.IsNullOrWhiteSpace(Text))
+                return;
+
+            Items.Add(Text);
+            //add our item 
+            Text = string.Empty;
+
+        }
+
+        [ICommand]
+        void Delete(string s)
+        {
+            if (Items.Contains(s))
+            {
+                Items.Remove(s);
+            }
+        }
+    }
+}
+
+
+###########################......2 Views........###########################################3
+
+-------------Mainpage.xaml-----------------------
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVM_databing.MainPage"
+//.............................................................................................................................................
+             xmlns:viewmodel="clr-namespace:MVVM_databing.ViewModel"
+             x:DataType="viewmodel:MainViewModel" 
+//.............................................................................................................................................
+             
+             >
+
+    <Grid 
+        RowDefinitions="100,Auto,*" 
+        ColumnDefinitions=".75*,.25*"
+        Padding="10" 
+        RowSpacing="10" 
+        ColumnSpacing="10">
+
+        <Image 
+            Grid.ColumnSpan="2" 
+            Source="dotnet_bot.svg" 
+            Background = "Transparent"/>
+
+        <Entry 
+            Placeholder="Enter Task" 
+//.............................................................................................................................................
+             Text="{Binding Text}"
+//.............................................................................................................................................
+            Grid.Row="1" />
+
+        <Button 
+           Text="Add"
+//.............................................................................................................................................
+            Command="{Binding AddCommand}"
+//.............................................................................................................................................            
+            Grid.Row="1" 
+            Grid.Column="1"/>
+
+        <CollectionView
+            Grid.Row="2" 
+            Grid.ColumnSpan="2" 
+//.............................................................................................................................................
+            ItemsSource="{Binding Items}"
+//.............................................................................................................................................
+            >
+           
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+//.............................................................................................................................................
+                    x:DataType="{x:Type x:String}"
+//.............................................................................................................................................
+                    >
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                     //........................................ We do this because it's a method of class MainViewModel.....................................................................................................
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}"
+                //.............................................................................................................................................
+					 Text="Delete" 
+                                    BackgroundColor="Red"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                            <Frame>
+                                <Label 
+//.............................................................................................................................................
+                                    Text="{Binding .}"
+//.............................................................................................................................................
+                                    FontSize="24"/>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid> 
+    
+    
+
+</ContentPage>
+
+
+
+-----------------Mainpage.xaml.cs-----------------------
+
+using MVVM_databing.ViewModel;
+
+namespace MVVM_databing;
+
+public partial class MainPage : ContentPage
+{
+	
+//.............................................................................................................................................
+	public MainPage(MainViewModel vm)
+//.............................................................................................................................................	
+{
+		InitializeComponent();
+//.............................................................................................................................................
+		BindingContext = vm;
+//.............................................................................................................................................
+	}
+
+}
+
+######################.........3 regiter view and viewmodels .........
+
+-----MauiProgram.cs-----
+
+using MVVM_databing.ViewModel;
+
+namespace MVVM_databing;
+
+public static class MauiProgram
+{
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
+
+//......................................................................................
+
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<MainViewModel>(); 
+//..............................................................................
+
+
+		return builder.Build();
+	}
+}
+
+

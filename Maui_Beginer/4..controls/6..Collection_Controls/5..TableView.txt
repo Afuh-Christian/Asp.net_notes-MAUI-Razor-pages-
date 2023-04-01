@@ -1,0 +1,59 @@
+........................
+46:00
+
+--------------------------------
+Intent == in the <TableView> telling how the table will be displayed 
+-settings
+-Menu..etc 
+----------------------------------------------
+
+Table of elements to define different sections 
+Each row has a different appearance
+
+-------------------------
+<TextCell>...to display text
+<EntryCell>...to enter text 
+<SwitchCell>....to on or off the section
+
+
+
+
+    <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection
+                Title="First Section">
+                <TextCell 
+                    Detail="TextCell Detail"
+                    Text="TextCell"/>
+                <EntryCell 
+                    Label="Entry Label" 
+                    Text="EntryCell Text"/>
+                <SwitchCell 
+                    Text="SwitchCell Text"/>
+                <ImageCell 
+                    Detail="ImageCell Detail" 
+                    ImageSource="dotnet_bot.svg" 
+                    Text="ImageCell Text" /> 
+            </TableSection>
+            <TableSection
+                Title="Second Section"
+                >
+                <TextCell 
+                    Detail="TextCell Detail" 
+                    Text="TextCell" />
+                <EntryCell 
+                    Label="Entry Label"       
+                    Text="EntryCell Text"/>
+                <SwitchCell 
+                    Text="SwitchCell Text"/>
+                <ImageCell 
+                    Detail="ImageCell Detail" 
+                    ImageSource="dotnet_bot.svg" 
+                    Text="ImageCell Text" />
+
+
+            </TableSection>
+        </TableRoot>
+    </TableView>
+    
+    

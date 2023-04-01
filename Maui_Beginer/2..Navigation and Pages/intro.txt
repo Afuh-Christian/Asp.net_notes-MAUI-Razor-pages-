@@ -1,0 +1,33 @@
+
+Content page
+Flyout page
+Navigation Page
+Tab Page
+
+#################################################################################
+How to assign home page for the app 
+1:34
+
+-In the App.cs
+-MainPage = new AppShell(); ... makes AppShell.xaml to be the main Page
+-we could still change it to MainPage = new MainPage(); to make MainPage.xaml to be the MainPage
+
+
+
+NB...WE used AppShell because of the features it has for Navigation
+
+
+
+namespace Pages;
+
+public partial class App : Application
+{
+	public App()
+	{
+		InitializeComponent();
+
+		MainPage = new AppShell();
+	}
+}
+
+#################################################################################

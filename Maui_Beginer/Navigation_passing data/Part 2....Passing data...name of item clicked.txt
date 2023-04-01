@@ -1,0 +1,209 @@
+....For now we would like to display the name of the item clicked on the next page..........
+
+
+
+Step 1.....
+
+passing it as a query property
+
+TextId= query identifier ..NB(name cannot take underscores)
+
+s = string that was passed as the parameter of the Tab()
+
+---------------------------------------------------------------------------
+
+        [ICommand] 
+        async Task Tap(string s)
+        {
+            await Shell.Current.GoToAsync($"{ nameof(DetailPage)}?TextId = {s}");
+        }
+---------------------------------------------------------------------------
+        
+NB...for complex datatypes..
+
+-----------------------------------------------------------------------------
+     [ICommand] 
+        async Task Tap(string s)
+        {
+            await Shell.Current.GoToAsync($"{ nameof(DetailPage)}?TextId = {s}",
+                new Dictionary<string, object>
+                {
+                    {nameof(DetailPage),new object() }
+                });
+        }
+-------------------------------------------------------------------------------
+
+MainViewModel.cs
+
+
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+
+namespace MVVM_databing.ViewModel
+{
+    public partial class MainViewModel : ObservableObject
+    {
+
+
+
+        public MainViewModel()
+        {
+            Items = new ObservableCollection<string>();
+        }
+
+        //.....to get total items.....returning Items from INotifyProperchanged
+        [ObservableProperty]
+        ObservableCollection<string> items;
+
+        //.....to get text......returning Text from INotifyProperchanged
+        [ObservableProperty]
+        string text;
+
+        //.....some type of action listerner .... to add items 
+        [ICommand]
+        void Add()
+        {
+            if (string.IsNullOrWhiteSpace(Text))
+                return;
+
+            Items.Add(Text);
+            //add our item 
+            Text = string.Empty;
+
+        }
+
+        [ICommand]
+        void Delete(string s)
+        {
+            if (Items.Contains(s))
+            {
+                Items.Remove(s);
+            }
+        }
+
+
+//..................................................................................
+
+        [ICommand] 
+        async Task Tap(string s)
+        {
+            await Shell.Current.GoToAsync($"{ nameof(DetailPage)}?TextId = {s}");
+        }
+//..................................................................................
+
+    }
+}
+
+
+
+#################################################################################
+
+step 2....getting the string in the detailViewModel
+
+-WE can add a query property in one of two places 
+ -DetailPage 
+ -Or directly into the DetailViewModel
+
+ Add   [QueryProperty("Textdata","Text_id")] at the top 
+
+ -----------------------------
+ Text_id = data from the Mainpage
+ Textdata = current data we need to do binding to and pass to the detailpage
+
+
+DetailViewModel.cs
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MVVM_databing.ViewModel
+{
+//........................................................
+    [QueryProperty("Textdata","TextId")]
+//........................................................
+    public partial class DetailViewModel : ObservableObject
+    {
+//........................................................
+        [ObservableProperty]
+        string textdata;
+//........................................................
+
+    }
+}
+
+
+########### lets add a goback() ....#####
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MVVM_databing.ViewModel
+{
+    [QueryProperty("Textdata","TextId")]
+    public partial class DetailViewModel : ObservableObject
+    {
+
+        [ObservableProperty]
+        string textdata;
+
+
+//.........................................................
+	   [ICommand]
+        async Task GoBack()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+//.........................................................
+    }
+}
+
+
+NB...we can also pass parameters back
+
+##################################################
+
+step..3...recieving the data from binding
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVM_databing.DetailPage"
+             Title="DetailPage"
+ //.........................................................            
+              xmlns:viewmodel="clr-namespace:MVVM_databing.ViewModel"
+             x:DataType="viewmodel:DetailViewModel" 
+//.........................................................             
+             >
+    <StackLayout>
+        <Label 
+//.........................................................            
+            Text="{Binding Textdata}"
+//.........................................................      
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+
+        <Button Text="Go Back" 
+//.........................................................                
+                Command="{Binding GoBackCommand}"
+//.........................................................                
+                />
+    </StackLayout>
+</ContentPage>
+
+
+-We didn't need to set datatype because the datatype was never altered
+-No parameters needed
+
+

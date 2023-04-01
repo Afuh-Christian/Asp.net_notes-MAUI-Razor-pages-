@@ -1,0 +1,24 @@
+..............
+
+Rectangle
+
+##################################################
+
+ <Rectangle
+            Fill="blue"
+            HeightRequest="100"      
+            WidthRequest="100"       
+               Stroke="black"    
+                StrokeThickness="10"    
+                RadiusX="10"          
+                RadiusY="10"  
+                
+            />
+
+Border radiues ......
+RadiusX="10"          
+RadiusY="10" 
+
+
+
+##################################################

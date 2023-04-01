@@ -1,0 +1,8 @@
+................
+ <CheckBox 
+            IsChecked="True"
+/>
+
+
+isChecked ... for the box to be checked
+we would need a Label control to add text

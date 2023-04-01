@@ -1,0 +1,304 @@
+Shell
+
+-built in dependency service for contructor injection and 
+ dependency injection 
+-uri based navigation (similar to a website ) ,,,go to /details....to details page
+ can send query parameters (simple data types or complex objects as well )
+
+
+###################################
+.........
+create new page  ........
+
+DetailPage.xaml
+
+###################################
+
+create a viewmodel for this page
+
+ViewModel
+    DetailViewModel.cs
+
+###################################
+
+step..1.. Associate the viewmodel with the view
+
+
+
+-----DetailPage.xaml.cs---------
+
+
+using MVVM_databing.ViewModel;
+
+namespace MVVM_databing;
+
+public partial class DetailPage : ContentPage
+{
+//..................................................
+	public DetailPage(DetailViewModel vm)
+//..................................................
+	{
+		InitializeComponent();
+
+//..................................................
+		BindingContext = vm;
+//..................................................
+	}
+}
+
+###################################
+
+step..2...register the view and viewmodel
+
+
+using MVVM_databing.ViewModel;
+
+namespace MVVM_databing;
+
+public static class MauiProgram
+{
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainViewModel>();
+
+
+//..................................................
+builder.Services.AddTransient<DetailPage>();
+builder.Services.AddTransient<DetailViewModel>();	
+//..................................................
+
+
+
+        return builder.Build();
+	}
+}
+
+
+transient ....we are working with a list of item ...so we will
+need to create a new page and delete it and do it over again for the 
+next item
+
+######################################################
+
+step..3..Register with the routing system of dot net maui shell
+
+
+AppShell.xaml.cs
+
+namespace MVVM_databing;
+
+public partial class AppShell : Shell
+{
+    public AppShell()
+    {
+        InitializeComponent();
+
+        //......has two parameters .... route and type ...........
+
+        Routing.RegisterRoute(nameof(DetailPage), typeof(DetailPage));
+
+
+        //........................................................
+    }
+}
+
+######################################################################################
+
+Step..4...adding the Add IComman in the MainViewModel..(Not the DetailViewModel)
+
+
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+
+namespace MVVM_databing.ViewModel
+{
+    public partial class MainViewModel : ObservableObject
+    {
+
+
+
+        public MainViewModel()
+        {
+            Items = new ObservableCollection<string>();
+        }
+
+        //.....to get total items.....returning Items from INotifyProperchanged
+        [ObservableProperty]
+        ObservableCollection<string> items;
+
+        //.....to get text......returning Text from INotifyProperchanged
+        [ObservableProperty]
+        string text;
+
+        //.....some type of action listerner .... to add items 
+        [ICommand]
+        void Add()
+        {
+            if (string.IsNullOrWhiteSpace(Text))
+                return;
+
+            Items.Add(Text);
+            //add our item 
+            Text = string.Empty;
+
+        }
+
+        [ICommand]
+        void Delete(string s)
+        {
+            if (Items.Contains(s))
+            {
+                Items.Remove(s);
+            }
+        }
+
+
+//..................................................................................
+
+        [ICommand] 
+        async Task Tap(string s)
+        {
+            await Shell.Current.GoToAsync(nameof(DetailPage));
+        }
+//..................................................................................
+
+    }
+}
+
+
+
+
+
+
+
+######################################################################################
+
+Step..5...Gesturerecognizers and Binding the Tap() from the viewmodel
+
+There are several ways of registering a select event with the collectionview...
+-Seleteitem...etc
+
+-we will deactivate the selection property with the  SelectionMode = "None"
+
+-we'll use the gesture recognizers
+
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVM_databing.MainPage"
+             
+             xmlns:viewmodel="clr-namespace:MVVM_databing.ViewModel"
+             x:DataType="viewmodel:MainViewModel" 
+             
+             >
+
+    <Grid 
+        RowDefinitions="100,Auto,*" 
+        ColumnDefinitions=".75*,.25*"
+        Padding="10" 
+        RowSpacing="10" 
+        ColumnSpacing="10">
+
+        <Image 
+            Grid.ColumnSpan="2" 
+            Source="dotnet_bot.svg" 
+            Background = "Transparent"/>
+
+        <Entry 
+            Placeholder="Enter Task" 
+             Text="{Binding Text}"
+            Grid.Row="1" />
+
+        <Button 
+           Text="Add"
+           
+            Command="{Binding AddCommand}"
+            
+            Grid.Row="1" 
+            Grid.Column="1"/>
+
+        <CollectionView
+            Grid.Row="2" 
+            Grid.ColumnSpan="2" 
+            ItemsSource="{Binding Items}"
+//........................................................           
+            SelectionMode="None"  
+//........................................................
+            >
+           
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    
+                    x:DataType="{x:Type x:String}"
+                    
+                    >
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Delete" 
+                                    BackgroundColor="Red"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                            <Frame>
+                                
+//........................................................                                
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=TapCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+//........................................................                             
+                                
+                                <Label 
+                                    Text="{Binding .}"
+                                    FontSize="24"/>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid> 
+    
+    
+
+</ContentPage>
+
+
+....For now we are just navigating to a new empty page when we 
+ tab on any item .....
+
+
+...In the next part ...we will pass data between the pages ..
+
+
+
+
+
+
+
+
+
+
+
+
+

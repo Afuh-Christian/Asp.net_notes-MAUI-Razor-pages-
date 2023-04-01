@@ -1,0 +1,6 @@
+......making an image a button............
+
+    <ImageButton
+            Source="dotnet_bot.svg"
+            Clicked="btnclick_Clicked"
+            />

@@ -1,0 +1,88 @@
+##########....to enter text........###############
+31:00
+
+
+<Entry><Entry/>
+
+has properties like the <input/> in html.....
+----------------------------------------
+IsPassword...to have password format 
+---------------------------------------
+textChanged = an event..every time a text is entered
+--------------------------------------------------
+Completed = an event...when you finish typing the text 
+-----------------------------------------------------
+
+keyBoard = type as in html
+
+
+
+##################################33
+
+
+        <Entry
+            Placeholder="Enter Name"
+           Keyboard="Text"
+            />
+
+        <Entry
+            Placeholder="Enter Password"
+            IsPassword="True"
+            Keyboard="Plain"
+            />
+
+
+        <Entry
+            Placeholder="Enter Phone Number"
+            Keyboard="Telephone"
+            />
+
+        <Entry 
+            Placeholder="Enter email" 
+            Keyboard="Email"/>
+
+###############################################3
+
+
+###########.........adding the event handlers..........##############33
+
+
+###########.....xaml.....############
+
+
+   <Entry
+            Placeholder="Enter Name"
+            x:Name="txtName"
+            IsPassword="True"
+            Keyboard="Telephone"
+            TextChanged="Entry_TextChanged"
+            Completed="Entry_Completed"
+            />
+
+
+###########......cs.......###########
+
+using System.Diagnostics;
+
+
+   private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Debug.WriteLine(txtName.Text);
+    }
+
+
+   private void Entry_Completed(object sender, EventArgs e)
+    {
+        Debug.WriteLine("You finished typing");
+    }
+
+...result on console..... 
+
+
+
+
+
+######################################
+
+
+

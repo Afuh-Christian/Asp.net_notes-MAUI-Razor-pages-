@@ -1,0 +1,140 @@
+
+
+
+Pizza sells page
+Custom Pizza Form Page
+Checkout Page
+Thank you Page
+
+
+######################################################################################
+
+-create 2 new folders  Forrms and Checkout
+-create razor pages Pizza , Checkout, ThankYou 
+
+.Pages
+	.Forms
+		*CustomPizza.cshtml
+		  CustomPizza.cshtml.cs
+	.Checkout
+		*Checkout.cshtml
+		  Checkout.cshtml.cs
+		*ThankYou.cshtml
+		  ThankYou.cshtml.cs
+	*Pizza.cshtml
+	  Pizza.cshtml.cs
+
+
+######################################################################################
+
+Set up pizza page to be accessable from nav bar
+
+Pages
+ Shared 
+   _layout.cshtml
+   ...
+ <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-page="/Pizza">Pizza</a>
+ </li>
+ ...
+     
+
+
+
+
+
+
+
+######################################################################################
+to custom pizza
+to checkout
+
+Pizza.cshtml
+
+	
+<a class="nav-link text-dark" asp-area="" asp-page="Forms/CustomPizza">CustomPizza</a>
+
+<a class="nav-link text-dark" asp-area="" asp-page="Checkout/Checkout">Checkout</a>
+	
+
+######################################################################################
+
+1:25:00
+
+
+CustomPizza.cshtml 
+
+
+@page
+@model RazorPizza.Pages.Forms.CustomPizzaModel
+@{
+}
+
+
+///..................(NB:../folder/view_name.....we do this when moving out of a folder into another folder...............
+///.....Because we have to move out of the form folder into the .......................
+
+<a class="nav-link text-dark" asp-area="" asp-page="/Checkout/Checkout">Checkout</a>
+
+
+//............................................................................................
+
+  <a class="nav-link text-dark" asp-area="" asp-page="/Pizza">Pizzas</a>
+
+
+######################################################################################
+
+NB ... for the link ... "Forms/CustomPizza"   ... we move directly into a folder or withing the same folder
+...... for .........../Checkout/Checkout    ...the starting "/" signifies we exiting a folder 
+
+
+######################################################################################
+
+Where the styling takes place
+
+wwwroot
+  lib
+    bootstrap
+       css
+          bootstrap.css ..etc
+
+NB......We can still override the styling here but it'll be better to do that in our own css file 
+
+
+wwwroot
+   css
+
+
+
+######################################################################################
+
+NB .... you can have multiple classes for one html tag
+
+ <a class="btn btn-primary nt-1" asp-area="" asp-page="Checkout/ThankYou">BRING ME THAT PIZZA</a>
+
+
+this is the basis of boostrap
+
+
+######################################################################################
+to create a shadow in css
+   filter:drop-shadow(0px 0px 10px rgba(0,0,0,0.3));
+
+######################################################################################
+
+  Creating a form to allow us to generate pizza
+
+we need to use a data model 
+
+WE will use the MVVM architecture for this ......
+
+######################################################################################
+
+
+
+
+
+
+
+
+	

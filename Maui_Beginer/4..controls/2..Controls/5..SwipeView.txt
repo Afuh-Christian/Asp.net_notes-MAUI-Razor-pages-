@@ -1,0 +1,66 @@
+22:20
+
+SwipeView
+    Layout or set of controls
+
+-we can move to right or left..
+
+-has main content and items
+-Invoke = Event Listerner
+
+
+
+
+a################################################33
+
+
+        <SwipeView>
+            <!--items section-->
+            <SwipeView.LeftItems>
+                
+                <SwipeItem
+                    Text="Favorite"
+                    BackgroundColor="LightGreen"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+                <SwipeItem
+                    Text="Delete"
+                    BackgroundColor="Pink"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+                <SwipeItem
+                    Text="update"
+                    BackgroundColor="Gainsboro"
+                    IconImageSource="dotnet_bot"
+                    Invoked="SwipeItem_Invoked"
+                    />
+
+
+            </SwipeView.LeftItems>
+            <!--main section-->
+            <Grid
+                BackgroundColor="LightGrey"
+                HeightRequest="60"
+                WidthRequest="300"
+                >
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Swipe Right" 
+                    VerticalOptions="Center"/>
+
+            </Grid>
+            
+            
+        </SwipeView>
+a################################################33
+    private void SwipeItem_Invoked(object sender, EventArgs e)
+    {
+        DisplayAlert("SwipeView", $"Intem tabbed","ok");
+    }
+
+
+you can go to the back code and create a normal event handler

@@ -1,0 +1,5 @@
+
+   <ActivityIndicator 
+            IsRunning="True"
+            Color="Blue"
+            />

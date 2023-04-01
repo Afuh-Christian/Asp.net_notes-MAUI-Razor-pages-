@@ -1,0 +1,22 @@
+ ASP.NET Core 
+  - It's a cross platformance, open source framework by microsoft 
+  -It's used to build modern,cloud enabled, internet connected apps 
+
+ADVANTAGES 
+ -Cross Platform....Ability to develop and run on windows,MacOs and Linux
+ -Productive Components .... Using Razor Pages for page focused development 
+                              and Blazor to embed C# alongside javascript
+ -Open Source ....Community focused and supports common server hosting like Apache,Docker 
+
+
+ASP.NET supports
+
+-We can build 
+  - Web apps 
+  - Services 
+  - Internet of things (IoT) apps
+  - Mobile backends 
+-Deploy to the cloud of on-premises servers (using azure,aws etc)
+
+
+

@@ -1,0 +1,26 @@
+........
+
+For drawing lines 
+
+#################################################
+
+        <Line 
+            X1="0"
+            Y1="0"
+            X2="100"
+            Y2="50"
+             Stroke="Black"
+            StrokeThickness="10"/>
+#################################################
+
+
+Meaning
+Stroke =color of line
+StrokeThickness = line thickness
+
+
+Points on the coordinate axis
+            X1="0"
+            Y1="0"
+            X2="100"
+            Y2="50"
